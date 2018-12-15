@@ -18,7 +18,8 @@
     border-left: 1px solid #e7e7e7;
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: 240px 240px 240px 240px 240px;
+    grid-template-rows: repeat(5, 200px);
+    text-align: center;
 }
 .advertising-info {
     width: 97%;

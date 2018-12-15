@@ -23,16 +23,17 @@ export default {
                         <img src="${project[random].covers[202]}" class="project-img">
                     </div>
                     <div class="box2 project-general-info">
-                        <p class="project-index">Индекс: ${project[random].id}</p>
-                        <p class="project-name">Название: ${project[random].name}</p>
-                        <p class="project-fields">Категория: <br>${project[random].fields}</p>
+                        <p class="project-index">#${project[random].id}</p>
+                        <p class="project-name">${project[random].name}</p>
+                        <p class="project-fields">${project[random].fields}</p>
+                        <button class="project-open-btn1"> Что-то сделать</button>
+                        <button class="project-open-btn2">Посмотреть</button>
                     </div>
-                    <div class="box3 project-fields">
-                        
-                        <ul class="project-stats">
-                            <li class="project-li-stat">Просмотров: ${project[random].stats.views}</li> 
-                            <li class="project-li-stat">Благодарностей: ${project[random].stats.appreciations}</li>
-                            <li class="project-li-stat">Комментариев: ${project[random].stats.comments}</li>
+                    <div class="project-stats">
+                        <ul class="project-stat">
+                            <li class="project-li-stat"><i class="fas fa-eye"></i> ${project[random].stats.views}</li> 
+                            <li class="project-li-stat"><i class="fas fa-thumbs-up"></i> ${project[random].stats.appreciations}</li>
+                            <li class="project-li-stat"><i class="fas fa-comment"></i> ${project[random].stats.comments}</li>
                         </ul>
                     </div>
                     
@@ -53,56 +54,76 @@ export default {
     padding-left: 5px;
     padding-top: 5px;
     display: grid;
-    grid-template-columns: 475px 475px;
-    grid-auto-rows: 250px;
+    grid-template-columns: 530px 530px;
+    grid-auto-rows: 220px;
 }
 .project-card {
     width: 97%;
-    height: 97%;
-    background-color: #f5f5f5;
-    margin: 0 auto;
+    height: 93%;
+    
+    margin: 0 auto 10px auto;
     border-radius: 20px;
     display: grid;
-    grid-template-columns: 202px 258px;
+    grid-template-columns: 202px 1fr;
     grid-template-rows: 158px;
     border: 1px solid #e7e7e7;
+    box-shadow: 1px 1px 8px rgba(0,0,0,0.3);
+}
+.project-card:hover {
+    background-color: #f5f5f5;
+    box-shadow: 5px 5px 10px rgba(0,0,0,0.3);
 }
 .project-img {
     border-top-left-radius: 20px;
+    padding-top: 0.5px;
 }
 .project-general-info {
     margin: 0px;
     padding-left: 5px;
-}
-.project-fields {
-    
+    display: grid;
 }
 .project-li-stat {
     display: inline; 
     margin-right: 5px;
 }
-.project-stats {
+.project-stat {
     list-style: none;
     padding-left: 0px;
     text-align: center;
 }
 .project-index {
-    float: right;
-    margin-bottom: 0px;
+    text-align: right;
+    margin-right: 5px;
     margin-top: 5px;
-    padding-right: 10px;
+    grid-column-start: 1;
+    grid-column-end: 3;
+    grid-row-start: 1;
+    grid-row-end: 1;
 }
 .project-name {
-    margin-top: 30px;
     margin-bottom: 0px;
+    font-size: 1.3em;
+    text-align: center;
+    grid-column-start: 1;
+    grid-column-end: 3;
+    grid-row-start: 2;
+    grid-row-end: 2;
 }
-.box1 {
+.project-fields {
+    text-align: center;
+    color: #939292;
+    grid-column-start: 1;
+    grid-column-end: 3;
+    grid-row-start: 3;
+    grid-row-end: 3;
+}
+.project-image {
    grid-column-start: 1;
    grid-column-end: 2;
    grid-row-start: 1;
    grid-row-end: 2;
 }
-.box3 {
+.project-stats {
    grid-column-start: 1;
    grid-column-end: 3;
    grid-row-start: 2;
@@ -110,5 +131,9 @@ export default {
 }
 p {
     margin: 0px;
+}
+.project-open-btn1, .project-open-btn2 {
+    margin-right: 5px;
+    cursor: pointer;
 }
 </style>

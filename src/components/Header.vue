@@ -102,7 +102,12 @@ export default {
     color: #fff;
     border: 1px solid transparent;
 }
+.button-blue:hover {
+    background-color: #1b6cbe;
+    cursor: pointer;
+}
 .button-gray {
     background-color: #f9f9f9;
+    cursor: pointer;
 }
 </style>
