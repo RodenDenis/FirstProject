@@ -60,7 +60,6 @@ export default {
 .project-card {
     width: 97%;
     height: 93%;
-    
     margin: 0 auto 10px auto;
     border-radius: 20px;
     display: grid;
@@ -68,10 +67,16 @@ export default {
     grid-template-rows: 158px;
     border: 1px solid #e7e7e7;
     box-shadow: 1px 1px 8px rgba(0,0,0,0.3);
+    -moz-transition: all 0.5s ease-out;
+    -o-transition: all 0.5s ease-out;
+    -webkit-transition: all 0.5s ease-out;
 }
 .project-card:hover {
     background-color: #f5f5f5;
     box-shadow: 5px 5px 10px rgba(0,0,0,0.3);
+    -webkit-transform: scale(1.2);
+    -moz-transform: scale(1.2);
+    -o-transform: scale(1.2);
 }
 .project-img {
     border-top-left-radius: 20px;
@@ -135,5 +140,7 @@ p {
 .project-open-btn1, .project-open-btn2 {
     margin-right: 5px;
     cursor: pointer;
+    width: 140px;
+    height: 28px;
 }
 </style>
