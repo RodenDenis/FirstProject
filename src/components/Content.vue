@@ -4,6 +4,7 @@
         <div class="main-content">
             <Projects/>
             <Advertising/>
+            <ProjectInfo/>
         </div>
     </div>
 </template>
@@ -11,12 +12,14 @@
 import Popular from "@/components/Popular.vue";
 import Projects from "@/components/Projects.vue";
 import Advertising from "@/components/Advertising.vue";
+import ProjectInfo from "@/components/ProjectInfo.vue";
 
 export default {
     components: {
         Popular,
         Projects,
-        Advertising
+        Advertising,
+        ProjectInfo
     },
 }
 

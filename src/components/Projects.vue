@@ -1,49 +1,46 @@
 <template>
-    <div class="projects" id="project-card">           
-        
+    <div class="projects" id="project-card" >         
+        <div v-for="projects in projects" :key="projects.id">
+            <div class="project-card">
+                <div class="project-image">
+                    <img src="{{projects.covers[202]}}" class="project-img">
+                </div>
+                <div class="project-general-info">
+                    <p class="project-index">#{{projects.id}}</p>
+                    <p class="project-name">{{projects.name}}</p>
+                    <p class="project-fields">{{projects.fields}}</p>
+                    <button class="project-open-btn1">Что-то сделать</button>
+                    <button class="project-open-btn2">Посмотреть</button>
+                </div>
+                <div class="project-stats">
+                    <ul class="project-stat">
+                        <li class="project-li-stat"><i class="fas fa-eye"></i> {{projects.stats.views}}</li> 
+                        <li class="project-li-stat"><i class="fas fa-thumbs-up"></i> {{projects.stats.appreciations}}</li>
+                        <li class="project-li-stat"><i class="fas fa-comment"></i> {{projects.stats.comments}}</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
     </div>
 </template>
 <script>
 import axios from 'axios';
+import {mapState, mapMutations, mapGetters} from "vuex";
 export default {
-    mounted() {
-    axios
-        .get('https://api.behance.net/v2/projects?q=motorcycle&client_id=UQHakERSArHWQGtYuuN0vuWbWFcPdtcL')
-        .then(response => this.projects = response.data)
-        .then(projects =>
-        {
-            let output = '';
-            let project = projects.projects;
-    
-            for (let i = 0; i < 10; i++) {
-                let random = Math.floor(Math.random() * project.length)
-                output += `
-                <div class="project-card">
-                    <div class="box1 project-image">
-                        <img src="${project[random].covers[202]}" class="project-img">
-                    </div>
-                    <div class="box2 project-general-info">
-                        <p class="project-index">#${project[random].id}</p>
-                        <p class="project-name">${project[random].name}</p>
-                        <p class="project-fields">${project[random].fields}</p>
-                        <button class="project-open-btn1"> Что-то сделать</button>
-                        <button class="project-open-btn2">Посмотреть</button>
-                    </div>
-                    <div class="project-stats">
-                        <ul class="project-stat">
-                            <li class="project-li-stat"><i class="fas fa-eye"></i> ${project[random].stats.views}</li> 
-                            <li class="project-li-stat"><i class="fas fa-thumbs-up"></i> ${project[random].stats.appreciations}</li>
-                            <li class="project-li-stat"><i class="fas fa-comment"></i> ${project[random].stats.comments}</li>
-                        </ul>
-                    </div>
-                    
-                </div>`;
-                }
-
-                document.getElementById('project-card').innerHTML = output;
-        })
-        
+    data() {
+        return {
+            projects: []
+        }
+    },
+    created() {
+        this.getProjects()
+    },
+    methods: {
+    getProjects: function() {
+        axios.get('https://api.behance.net/v2/projects?q=motorcycle&client_id=UQHakERSArHWQGtYuuN0vuWbWFcPdtcL')
+        .then(response => this.projects = response.data.projects)
     }
+    },
 }
 </script>
 
@@ -67,16 +64,10 @@ export default {
     grid-template-rows: 158px;
     border: 1px solid #e7e7e7;
     box-shadow: 1px 1px 8px rgba(0,0,0,0.3);
-    -moz-transition: all 0.5s ease-out;
-    -o-transition: all 0.5s ease-out;
-    -webkit-transition: all 0.5s ease-out;
 }
 .project-card:hover {
     background-color: #f5f5f5;
     box-shadow: 5px 5px 10px rgba(0,0,0,0.3);
-    -webkit-transform: scale(1.2);
-    -moz-transform: scale(1.2);
-    -o-transform: scale(1.2);
 }
 .project-img {
     border-top-left-radius: 20px;
